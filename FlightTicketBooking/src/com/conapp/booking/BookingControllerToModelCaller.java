@@ -10,4 +10,5 @@ public interface BookingControllerToModelCaller {
     void bookSeat(User user, int row, int column);
     boolean checkFlights(String src, String dst);
     public List<Bookings> getBookings(User user);
+    public void cancelBooking(User user, int booking);
 }
