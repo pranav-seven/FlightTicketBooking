@@ -27,6 +27,7 @@ public class BookingView implements BookingControllerToViewCaller{
             System.out.println("Enter ");
             System.out.println("1 - Book flight");
             System.out.println("2 - View bookings");
+            System.out.println("3 - cancel booking");
             System.out.println("0 - Log out");
             choice = sc.nextByte();
             switch(choice)
@@ -34,6 +35,8 @@ public class BookingView implements BookingControllerToViewCaller{
                 case 1: openBooking();
                         break;
                 case 2: viewBookings();
+                        break;
+                case 3: cancelBooking();
                         break;
                 case 0: break;
                 default: System.out.println("Invalid choice, try again.");
@@ -62,7 +65,6 @@ public class BookingView implements BookingControllerToViewCaller{
                     if(confirmation == 'Y')
                     {
                         bookingController.bookSeat(row, column);
-                        System.out.println("Seat Confirmed!");
                         System.out.print("Want to book again? (Y/N): ");
                     }
                     else
@@ -85,9 +87,13 @@ public class BookingView implements BookingControllerToViewCaller{
     private void viewBookings()
     {
         List<Bookings> list = bookingController.getBookings(user);
-        System.out.println("Flight no.\tDeparture\tArrival\t\tSeat no.");
+        System.out.println("No.\tFlight no.\tDeparture\tArrival\t\tSeat no.");
+        int i=1;
         for(Bookings booking : list)
-            System.out.println(booking);
+        {
+            System.out.println(i+"\t"+booking);
+            i++;
+        }  
     }
 
     private void printSeats(boolean[][] seats)
@@ -118,8 +124,24 @@ public class BookingView implements BookingControllerToViewCaller{
         System.out.println("\nO - available\nx - booked");
     }
 
+    public void cancelBooking()
+    {
+        viewBookings();
+        System.out.print("Enter booking number to cancel: ");
+        int booking = sc.nextInt();
+        System.out.print("Are you sure want to cancel? (Y/N): ");
+        char c = sc.next().charAt(0);
+        if(c=='Y')
+           bookingController.cancelBooking(user, booking);
+    }
+
     public User getUser()
     {
         return user;
+    }
+    
+    public void printMessage(String message)
+    {
+       System.out.println(message);
     }
 }
