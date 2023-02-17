@@ -12,8 +12,16 @@ public class Bookings {
     }
      public String toString()
      {
-        return flight.getNumber()+"\t\t"+flight.getSource()+"\t\t"
+        return ""+flight.getNumber()+"\t\t"+flight.getSource()+"\t\t"
                         +flight.getDestination()+"\t\t"+seatNo;
-
      }
+
+     public Flight getFlight()
+     {
+        return flight;
+     }
+      public int getSeat()
+      {
+        return seatNo;
+      }
 }
