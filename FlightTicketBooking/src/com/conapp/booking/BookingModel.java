@@ -18,10 +18,6 @@ public class BookingModel implements BookingControllerToModelCaller{
     {
         bookingController = controller;
         repo = AeroplaneRepository.getInstance();
-        // seats = controller.;
-        // for(int i=0; i<seats.length; i++)
-        //     for(int j=0; j<seats[0].length; j++)
-        //         seats[i][j]  = true;
     }
 
     public boolean checkFlights(String source, String destination)
@@ -53,9 +49,24 @@ public class BookingModel implements BookingControllerToModelCaller{
         List<Bookings> bookingList = user.getBookings();
         bookingList.add(new Bookings(user, flight, seat));
         seats[row-1][column-1] = false;
+        String message = "Seat confirmed!\n";
+        message = message + "Flight no.\tDeparture\tArrival\t\tSeat no.\n";
+        message = message + flight.getNumber()+"\t"+flight.getSource()+"\t"+flight.getDestination()+"\t"+seat;
+        bookingController.sendMessage("Seat confirmed!");
     }
 
-    
+    public void cancelBooking(User user, int booking)
+    {
+        Bookings current = user.getBookings().get(booking-1);
+        flight = current.getFlight();
+        int seat = current.getSeat();
+        seats = flight.getSeats();
+        seats[seat/10-1][seat%10-1] = true;
+        user.getBookings().remove(booking-1);
+        bookingController.sendMessage("Booking cancelled!");
+
+    }
+
     public List<Bookings> getBookings(User user)
     {
         return user.getBookings();
