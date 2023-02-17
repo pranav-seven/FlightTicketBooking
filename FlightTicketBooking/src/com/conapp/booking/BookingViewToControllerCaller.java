@@ -9,6 +9,6 @@ public interface BookingViewToControllerCaller {
     boolean checkAvailability(int row, int column);
     void bookSeat(int row, int column);
     boolean checkFlights(String source, String destination);
-
-    public List<Bookings> getBookings(User user);
+    void cancelBooking(User user, int booking);
+    List<Bookings> getBookings(User user);
 }
