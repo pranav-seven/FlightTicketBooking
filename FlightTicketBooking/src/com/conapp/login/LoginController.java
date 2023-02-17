@@ -12,13 +12,6 @@ public class LoginController implements LoginViewToControllerCaller, LoginModelT
 		loginModel = new LoginModel(this);
 	}
 	
-	// public boolean checkLoginDetails(String username, String password)
-	// {
-	// 	boolean validLogin = false;
-	// 	if(username.equals("traveller") && password.equals("Bon Voyage"))
-	// 		validLogin = true;
-	// 	return validLogin;
-	// }
 	public boolean checkUsername(String username)
 	{
 		return loginModel.checkUsername(username);
