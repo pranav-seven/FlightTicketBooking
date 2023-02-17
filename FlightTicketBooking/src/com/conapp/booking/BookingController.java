@@ -1,6 +1,5 @@
 package com.conapp.booking;
 
-import com.conapp.login.LoginModel;
 import java.util.List;
 import com.conapp.dto.User;
 import com.conapp.dto.Bookings;
@@ -40,5 +39,15 @@ public class BookingController implements BookingViewToControllerCaller, Booking
     public List<Bookings> getBookings(User user)
     {
         return bookingModel.getBookings(user);
+    }
+
+    public void cancelBooking(User user, int booking)
+    {
+        bookingModel.cancelBooking(user, booking);
+    }
+    
+    public void sendMessage(String message)
+    {
+        bookingView.printMessage(message);
     }
 }
