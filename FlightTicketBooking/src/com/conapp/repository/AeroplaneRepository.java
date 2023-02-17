@@ -15,6 +15,7 @@ public class AeroplaneRepository {
         userList.add(new User("Vikram", "vikram", "aarambikalangala!"));
         userList.add(new User("Amar", "amar", "blacksquad"));
         userList.add(new User("Sandhanam", "drsandhanam", "methdoctor"));
+        userList.add(new User("Thor, son of Odin", "thor", "pointbreak"));
         flightList.add(new Flight("C283D", "Chennai", "Delhi", 9, 5, 9000));
         flightList.add(new Flight("C757M", "Chennai", "Mumbai", 9, 6, 5500));
         flightList.add(new Flight("M837C", "Mumbai", "Chennai", 9, 6, 5500));
