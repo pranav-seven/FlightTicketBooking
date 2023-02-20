@@ -58,7 +58,8 @@ public class LoginView implements LoginControllerToViewCaller {
                 System.out.println("Enter password: ");
                 password = sc.next();
                 System.out.println("Re-enter password: ");
-                if(sc.next().equals(password))
+                String rePassword = sc.next();
+                if(loginController.checkNewPassword(password, rePassword))
                 {
                     loginController.addUser(name, username, password);
                     break;
