@@ -11,7 +11,7 @@ public class LoginController implements LoginViewToControllerCaller, LoginModelT
 		loginView = view;
 		loginModel = new LoginModel(this);
 	}
-	
+
 	public boolean checkUsername(String username)
 	{
 		return loginModel.checkUsername(username);
@@ -40,5 +40,10 @@ public class LoginController implements LoginViewToControllerCaller, LoginModelT
 	public void loginFailure()
 	{
 		loginView.loginFailure();
+	}
+
+	public boolean checkNewPassword(String password, String rePassword)
+	{
+		return password.equalsIgnoreCase(rePassword);
 	}
 }
